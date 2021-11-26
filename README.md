@@ -18,7 +18,7 @@ repositories {
 }  
 
 dependencies { 
-    compile 'com.github.fatangare.LogcatViewer:logcatviewer:aadf092447'
+    implementation 'com.github.asgatech20:Android-Floating-Logger:Tag'
     }
 ```
 2. Add following code to launch LogcatViewer floating view. - To launch logcatviewer floating view.
