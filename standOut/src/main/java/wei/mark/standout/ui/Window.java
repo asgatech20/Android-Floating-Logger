@@ -378,36 +378,6 @@ public class Window extends FrameLayout {
 		final View decorations = mLayoutInflater.inflate(
 				R.layout.system_window_decorators, null);
 
-		// icon
-		final ImageView icon = (ImageView) decorations
-				.findViewById(R.id.window_icon);
-		icon.setImageResource(mContext.getAppIcon());
-		icon.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				PopupWindow dropDown = mContext.getDropDown(id);
-				if (dropDown != null) {
-					dropDown.showAsDropDown(icon);
-				}
-			}
-		});
-
-		// title
-		TextView title = (TextView) decorations.findViewById(R.id.title);
-		title.setText(mContext.getTitle(id));
-
-		// hide
-		View hide = decorations.findViewById(R.id.hide);
-		hide.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				mContext.hide(id);
-			}
-		});
-		hide.setVisibility(View.GONE);
-
 		// maximize
 		View maximize = decorations.findViewById(R.id.maximize);
 		maximize.setOnClickListener(new OnClickListener() {
@@ -481,10 +451,7 @@ public class Window extends FrameLayout {
 			}
 		});
 
-		// set window appearance and behavior based on flags
-		if (Utils.isSet(flags, StandOutFlags.FLAG_WINDOW_HIDE_ENABLE)) {
-			hide.setVisibility(View.VISIBLE);
-		}
+
 		if (Utils.isSet(flags, StandOutFlags.FLAG_DECORATION_MAXIMIZE_DISABLE)) {
 			maximize.setVisibility(View.GONE);
 		}
@@ -529,24 +496,6 @@ public class Window extends FrameLayout {
 								Window.this, v, event);
 
 						return consumed;
-					}
-				});
-			}
-		}
-
-		// window_icon for drop down
-		if (!Utils.isSet(flags,
-				StandOutFlags.FLAG_ADD_FUNCTIONALITY_DROP_DOWN_DISABLE)) {
-			final View icon = root.findViewById(R.id.window_icon);
-			if (icon != null) {
-				icon.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						PopupWindow dropDown = mContext.getDropDown(id);
-						if (dropDown != null) {
-							dropDown.showAsDropDown(icon);
-						}
 					}
 				});
 			}

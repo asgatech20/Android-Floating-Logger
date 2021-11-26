@@ -162,7 +162,6 @@ public class LogcatViewerFloatingView extends StandOutWindow {
 
         // Bottombar layouts
         mNormalBottombarLayout = (LinearLayout) rootView.findViewById(R.id.normalbottombar);
-        mRecordsBottombarLayout = (LinearLayout) rootView.findViewById(R.id.recordsbottombar);
 
         setupLogListView(rootView);
         setupBottomBarView(rootView);
@@ -264,80 +263,6 @@ public class LogcatViewerFloatingView extends StandOutWindow {
      * @param rootView root view.
      */
     private void setupBottomBarView(final View rootView){
-        //Pause button
-        rootView.findViewById(R.id.pause).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pauseLogging();
-                view.setVisibility(View.GONE);
-                rootView.findViewById(R.id.play).setVisibility(View.VISIBLE);
-            }
-        });
-
-        //Play button
-        rootView.findViewById(R.id.play).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                resumeLogging();
-                view.setVisibility(View.GONE);
-                rootView.findViewById(R.id.pause).setVisibility(View.VISIBLE);
-            }
-        });
-
-        //'Start Recording' button
-        rootView.findViewById(R.id.record).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                view.setVisibility(View.GONE);
-                rootView.findViewById(R.id.recordOn).setVisibility(View.VISIBLE);
-                try {
-                    String logFilename = "log_" + System.currentTimeMillis() + ".txt";
-                    mLogcatViewerService.startRecording(logFilename, mAdapter.getLogFilterText());
-                } catch (RemoteException e) {
-                    Log.e(LOG_TAG, "StartRecording:Trouble writing the log to a file");
-                }
-            }
-        });
-
-        //'Stop Recording' button
-        rootView.findViewById(R.id.recordOn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                view.setVisibility(View.GONE);
-                rootView.findViewById(R.id.record).setVisibility(View.VISIBLE);
-                try {
-                    mLogcatViewerService.stopRecording();
-                } catch (RemoteException e) {
-                    Log.e(LOG_TAG, "StopRecording:Trouble writing the log to a file");
-                }
-            }
-        });
-
-        //'Show Log Records' button
-        rootView.findViewById(R.id.btnRecordList).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int recordsViewVisibility = mRecordsListView.getVisibility();
-                resetMenuOptionLayout();
-                if (recordsViewVisibility == View.GONE) {
-                    if (mRecordsListView.getAdapter() == null) {
-                        mRecordsListView.setAdapter(new LogRecordsListAdapter(getApplicationContext()));
-                    } else {
-                        ((LogRecordsListAdapter) mRecordsListView.getAdapter()).notifyDataSetChanged();
-                }
-
-                    if (!mRecordsListView.getAdapter().isEmpty()) {
-                        mMenuOptionLayout.setVisibility(View.VISIBLE);
-                        mRecordsListView.setVisibility(View.VISIBLE);
-
-                        mNormalBottombarLayout.setVisibility(View.GONE);
-                        mRecordsBottombarLayout.setVisibility(View.VISIBLE);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Empty Logs directory! Save logs first.", Toast.LENGTH_LONG).show();
-                    }
-            }
-            }
-        });
 
         //'Enter filter text' button
         rootView.findViewById(R.id.find).setOnClickListener(new View.OnClickListener() {
@@ -394,60 +319,6 @@ public class LogcatViewerFloatingView extends StandOutWindow {
             }
         });
 
-
-        //'Back' button
-        mRecordsBottombarLayout.findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int cnt = mRecordsListView.getAdapter().getCount();
-
-                for (int index = 0; index < cnt; index++) {
-                    mRecordsListView.setItemChecked(index, false);
-                    getViewByPosition(index, mRecordsListView).setBackgroundColor(Color.WHITE);
-                }
-
-                resetMenuOptionLayout();
-                mNormalBottombarLayout.setVisibility(View.VISIBLE);
-                mRecordsBottombarLayout.setVisibility(View.GONE);
-            }
-        });
-
-        //'Select All' button
-        mRecordsBottombarLayout.findViewById(R.id.btnSelectAll).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean isSelectingAll = mRecordsListView.getCheckedItemCount() != mRecordsListView.getAdapter().getCount();
-                int color = isSelectingAll ? Color.LTGRAY : Color.WHITE;
-                int cnt = mRecordsListView.getAdapter().getCount();
-                for (int index = 0; index < cnt; index++) {
-                    mRecordsListView.setItemChecked(index, isSelectingAll);
-                    getViewByPosition(index, mRecordsListView).setBackgroundColor(color);
-                }
-            }
-        });
-
-
-        //'Delete' button
-        mRecordsBottombarLayout.findViewById(R.id.btnDelete).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deleteRecordedLogFiles();
-
-                if (mRecordsListView.getCount() == 0) {
-                    resetMenuOptionLayout();
-                    mNormalBottombarLayout.setVisibility(View.VISIBLE);
-                    mRecordsBottombarLayout.setVisibility(View.GONE);
-                }
-            }
-        });
-
-        //'Share' button
-        mRecordsBottombarLayout.findViewById(R.id.btnShare).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                shareRecordedLogFiles();
-            }
-        });
     }
     /**
      * Setup 'Enter filter text' layout.
