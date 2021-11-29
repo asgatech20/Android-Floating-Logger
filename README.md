@@ -36,7 +36,7 @@ LogcatViewer.showLogcatLoggerView(this);
   
 It will launch floating window which will show logcat logs of the application.
 
-## Authors
+## Contributors
 
 * [Ibrahim Ali](https://github.com/IbrahimAli2017)
 * [Muhammad Noamany](https://github.com/muhammadnomany25)
