@@ -1,4 +1,3 @@
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-LogcatViewer-green.svg?style=true)](https://android-arsenal.com/details/1/3463)  [![](https://jitpack.io/v/fatangare/LogcatViewer.svg)](https://jitpack.io/#fatangare/LogcatViewer)
 
 # LogcatViewer - Android Logcat Viewer
 
@@ -35,5 +34,14 @@ LogcatViewer.showLogcatLoggerView(this);
 
 *That's all!*  
   
-It will launch floating window which will show logcat logs of the application.   
+It will launch floating window which will show logcat logs of the application.
+
+## Authors
+
+* [Ibrahim Ali](https://github.com/IbrahimAli2017)
+* [Muhammad Noamany](https://github.com/muhammadnomany25)
+
+## Based On Repo Of:
+
+* https://android-arsenal.com/user/fatangare
  
