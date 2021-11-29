@@ -1,4 +1,4 @@
-package wei.mark.standout;
+package com.fatangare.logcatviewer.standout;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -41,8 +41,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import wei.mark.standout.constants.StandOutFlags;
-import wei.mark.standout.ui.Window;
+import com.fatangare.logcatviewer.R;
+import com.fatangare.logcatviewer.standout.constants.StandOutFlags;
+import com.fatangare.logcatviewer.standout.ui.Window;
 
 /**
  * Extend this class to easily create and manage floating StandOut windows.
@@ -291,8 +292,8 @@ public abstract class StandOutWindow extends Service {
                                            Bundle data, Class<? extends StandOutWindow> fromCls, int fromId) {
         return new Intent(context, toCls).putExtra("id", toId)
                 .putExtra("requestCode", requestCode)
-                .putExtra("wei.mark.standout.data", data)
-                .putExtra("wei.mark.standout.fromCls", fromCls)
+                .putExtra("data", data)
+                .putExtra("fromCls", fromCls)
                 .putExtra("fromId", fromId).setAction(ACTION_SEND_DATA);
     }
 
@@ -359,11 +360,11 @@ public abstract class StandOutWindow extends Service {
                     Log.w(TAG,
                             "Sending data to non-existant window. If this is not intended, make sure toId is either an existing window's id or DISREGARD_ID.");
                 }
-                Bundle data = intent.getBundleExtra("wei.mark.standout.data");
+                Bundle data = intent.getBundleExtra("data");
                 int requestCode = intent.getIntExtra("requestCode", 0);
                 @SuppressWarnings("unchecked")
                 Class<? extends StandOutWindow> fromCls = (Class<? extends StandOutWindow>) intent
-                        .getSerializableExtra("wei.mark.standout.fromCls");
+                        .getSerializableExtra("fromCls");
                 int fromId = intent.getIntExtra("fromId", DEFAULT_ID);
                 onReceiveData(id, requestCode, data, fromCls, fromId);
             }

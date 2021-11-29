@@ -1,2 +1,2 @@
-include ':standOut', ':logcatviewerexample'
+include ':logcatviewerexample'
 include ':logcatviewer'

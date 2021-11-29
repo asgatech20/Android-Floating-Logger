@@ -1,4 +1,4 @@
-package wei.mark.standout;
+package com.fatangare.logcatviewer.standout;
 
 public class Utils {
 	public static boolean isSet(int flags, int flag) {

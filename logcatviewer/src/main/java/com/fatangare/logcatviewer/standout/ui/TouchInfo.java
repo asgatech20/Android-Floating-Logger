@@ -1,4 +1,4 @@
-package wei.mark.standout.ui;
+package com.fatangare.logcatviewer.standout.ui;
 
 import java.util.Locale;
 

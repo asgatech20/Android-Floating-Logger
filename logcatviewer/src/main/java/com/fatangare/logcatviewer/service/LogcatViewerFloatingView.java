@@ -1,16 +1,16 @@
 /**
  * Copyright (C) 2016  Sandeep Fatangare <sandeep@fatangare.info>
- *
+ * <p>
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
+ * <p>
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *
+ * <p>
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -47,9 +47,9 @@ import com.fatangare.logcatviewer.ui.adapter.LogcatViewerListAdapter;
 import java.io.File;
 import java.util.ArrayList;
 
-import wei.mark.standout.StandOutWindow;
-import wei.mark.standout.constants.StandOutFlags;
-import wei.mark.standout.ui.Window;
+import com.fatangare.logcatviewer.standout.StandOutWindow;
+import com.fatangare.logcatviewer.standout.constants.StandOutFlags;
+import com.fatangare.logcatviewer.standout.ui.Window;
 
 /**
  * Floating view to show logcat logs.
@@ -249,7 +249,7 @@ public class LogcatViewerFloatingView extends StandOutWindow {
      * Setup list view to show logcat log-entries.
      * @param rootView root view.
      */
-    private void setupLogListView(final View rootView){
+    private void setupLogListView(final View rootView) {
         //Log entry list view
         mListView = (ListView) rootView.findViewById(R.id.list);
         mListView.setStackFromBottom(true);
@@ -262,7 +262,7 @@ public class LogcatViewerFloatingView extends StandOutWindow {
      * Setup bottombar view to show action buttons.
      * @param rootView root view.
      */
-    private void setupBottomBarView(final View rootView){
+    private void setupBottomBarView(final View rootView) {
 
         //'Enter filter text' button
         rootView.findViewById(R.id.find).setOnClickListener(new View.OnClickListener() {
@@ -273,7 +273,7 @@ public class LogcatViewerFloatingView extends StandOutWindow {
                 if (filterLayoutVisibility == View.GONE) {
                     mFilterLayout.setVisibility(View.VISIBLE);
                     mMenuOptionLayout.setVisibility(View.VISIBLE);
-            }
+                }
             }
         });
 
@@ -320,11 +320,12 @@ public class LogcatViewerFloatingView extends StandOutWindow {
         });
 
     }
+
     /**
      * Setup 'Enter filter text' layout.
      * @param rootView root view.
      */
-    private void setupFilterTextView(final View rootView){
+    private void setupFilterTextView(final View rootView) {
         rootView.findViewById(R.id.btnLogFilter).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -341,7 +342,7 @@ public class LogcatViewerFloatingView extends StandOutWindow {
     /**
      * Setup 'Select priority level' view
      */
-    private  void setupPriorityLevelView(){
+    private void setupPriorityLevelView() {
         mPriorityLevelRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {

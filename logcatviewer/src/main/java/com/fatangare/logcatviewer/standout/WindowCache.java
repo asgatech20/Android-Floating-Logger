@@ -1,11 +1,11 @@
-package wei.mark.standout;
+package com.fatangare.logcatviewer.standout;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import wei.mark.standout.ui.Window;
+import com.fatangare.logcatviewer.standout.ui.Window;
 
 import android.util.SparseArray;
 

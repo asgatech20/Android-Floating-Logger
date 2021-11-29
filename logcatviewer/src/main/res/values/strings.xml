@@ -7,4 +7,11 @@
     <string name="priority_info">Info</string>
     <string name="priority_warning">Warning</string>
     <string name="priority_error">Error</string>
+
+    <string name="window_icon">Window icon</string>
+    <string name="hide">Hide</string>
+    <string name="close">Close</string>
+    <string name="corner">Corner</string>
+    <string name="maximize">Maximize</string>
+
 </resources>

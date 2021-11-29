@@ -1,7 +1,7 @@
-package wei.mark.standout.constants;
+package com.fatangare.logcatviewer.standout.constants;
 
-import wei.mark.standout.StandOutWindow;
-import wei.mark.standout.ui.Window;
+import com.fatangare.logcatviewer.standout.StandOutWindow;
+import com.fatangare.logcatviewer.standout.ui.Window;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;

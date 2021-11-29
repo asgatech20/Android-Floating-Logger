@@ -18,11 +18,11 @@
         android:padding="4dp">
 
         <ImageView
-            android:src="@drawable/asga_logo"
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:layout_gravity="center_vertical"
-            android:contentDescription="@string/window_icon" />
+            android:contentDescription="@string/window_icon"
+            android:src="@drawable/asga_logo" />
 
         <TextView
             android:layout_width="0dp"
